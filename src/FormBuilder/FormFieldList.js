@@ -19,6 +19,42 @@ class FormFieldList extends Component {
       description: 'An input for email address',
       type: 'EMAIL_ADDRESS',
       icon: 'edit',
+    }, {
+      title: 'Textarea',
+      id: '3',
+      description: 'An input for email address',
+      type: 'TEXTAREA',
+      icon: 'edit',
+    }, {
+      title: 'Multiple Choice',
+      id: '4',
+      description: 'An input for email address',
+      type: 'MULTIPLE_CHOICE',
+      icon: 'edit',
+    }, {
+      title: 'Checkbox',
+      id: '5',
+      description: 'An input for email address',
+      type: 'CHECKBOX',
+      icon: 'edit',
+    }, {
+      title: 'Dropdown',
+      id: '6',
+      description: 'An input for email address',
+      type: 'DROPDOWN',
+      icon: 'edit',
+    }, {
+      title: 'Datepicker',
+      id: '7',
+      description: 'An input for email address',
+      type: 'DATE',
+      icon: 'edit',
+    }, {
+      title: 'File Upload',
+      id: '8',
+      description: 'An input for email address',
+      type: 'FILE',
+      icon: 'edit',
     }],
   }
 
@@ -32,7 +68,8 @@ class FormFieldList extends Component {
               {fields.map(field => (
                 <Col
                   key={field.id}
-                  span={12}
+                  span={24}
+                  style={{ marginBottom: '18px' }}
                 >
                   <FormFieldListItem
                     key={field.id}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Card } from 'antd';
 import { DragSource } from 'react-dnd';
+import classNames from 'classnames';
 import FormItemDroppable from './FormItemDroppable';
 import types from './types';
 
@@ -17,6 +18,7 @@ function collect(connect, monitor) {
   return {
     dragSourceConnector: connect.dragSource(),
     dragSourcePreview: connect.dragPreview(),
+    isDragging: monitor.isDragging(),
   };
 }
 
@@ -32,11 +34,11 @@ class FormItem extends Component {
   }
 
   render() {
-    const { onDropFormField, dragSourceConnector, dragSourcePreview, onFieldClick, containerIdx } = this.props;
+    const { onDropFormField, dragSourceConnector, dragSourcePreview, isDragging, onFieldClick, containerIdx } = this.props;
     const { formData } = this.state;
 
     return dragSourcePreview(
-      <div id={`form-${formData.id}`} className="FormItem">
+      <div id={`form-${formData.id}`} className={classNames('FormItem', { isDragging })}>
           {dragSourceConnector(
             <header className="FormItem-header">
               <h5>{formData.id}</h5>

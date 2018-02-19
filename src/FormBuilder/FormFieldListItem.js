@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
 import { Card, Icon } from 'antd';
 import shortid from 'shortid';
+import classNames from 'classnames';
 import types from './types';
 
 const formItemSpecs = {
@@ -21,6 +22,7 @@ function collect(connect, monitor) {
   return {
     connectDragSource: connect.dragSource(),
     connectDragPreview: connect.dragPreview(),
+    isDragging: monitor.isDragging(),
   };
 }
 
@@ -35,12 +37,11 @@ class FormFieldListItem extends Component {
   }
 
   render() {
-    const { fieldData, connectDragSource } = this.props;
+    const { fieldData, connectDragSource, isDragging } = this.props;
     return connectDragSource(
       <div>
-        <Card className="FieldListItem" hoverable>
-          <Icon type={fieldData.icon} style={{ fontSize: '24px' }}/>
-          <h5>{fieldData.title}</h5>
+        <Card className={classNames('FieldListItem', { isDragging })} hoverable>
+          <Icon type={fieldData.icon} style={{ marginRight: '24px' }}/><span>{fieldData.title}</span>
         </Card>
       </div>
     );
