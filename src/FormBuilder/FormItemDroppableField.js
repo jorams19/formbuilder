@@ -5,8 +5,9 @@ import types from './types';
 const fieldSpecs = {
   beginDrag(props, monitor) {
     return {
+      // must include all the values of a field, not just id label type
       id: props.fieldData.id,
-      title: props.fieldData.title,
+      label: props.fieldData.label,
       type: props.fieldData.type,
       prevForm: {
         id: props.formId,
@@ -29,7 +30,13 @@ function collect(connect, monitor) {
 
 class FormItemDroppableField extends Component {
   render() {
-    const { connectDragSource, onClick, formId, fieldData, containerIdx } = this.props;
+    const {
+      connectDragSource,
+      onClick,
+      formId,
+      fieldData,
+      containerIdx } = this.props;
+
     return connectDragSource(
       <div
         className="DroppableFieldItem"
@@ -39,7 +46,7 @@ class FormItemDroppableField extends Component {
           field_id: fieldData.id,
         })}
       >
-        <h5>{fieldData.title}({fieldData.type})</h5>
+        <h5>{fieldData.label}({fieldData.type})</h5>
       </div>
     );
   }

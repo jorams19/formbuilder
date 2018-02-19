@@ -19,7 +19,7 @@ const droppableSpecs = {
     };
     onDropField(prevForm, nextForm, {
       id: getField.id,
-      title: getField.title,
+      label: getField.label,
       type: getField.type,
     });
     return {

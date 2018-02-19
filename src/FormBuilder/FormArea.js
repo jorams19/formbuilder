@@ -24,8 +24,11 @@ class FormArea extends Component {
         required: true,
       }],
       target: {
-        ['value1']: '3k2123',
-        ['value2']: 'hiuue8',
+        fieldId: '123asdasd',
+        conditions: {
+          ['value1']: '3k2123',
+          ['value2']: 'hiuue8',
+        }
       },
     }, [{
       id: '3k2123',
@@ -137,7 +140,7 @@ class FormArea extends Component {
           fields: {
             $push: [{
               id: values.id,
-              title: values.title,
+              label: values.label,
               type: values.type,
             }],
           }
@@ -173,7 +176,7 @@ class FormArea extends Component {
     const fieldIndex = formArray[container_id][formIndex].fields.findIndex((field) => {
       return field.id === field_id;
     });
-    const updatedField = update(formArray, {
+    const updatedForm = update(formArray, {
       [container_id]: {
         [formIndex]: {
           fields: {
@@ -182,33 +185,27 @@ class FormArea extends Component {
                 ...values,
               }
             }
-          },
+          }
         }
       }
     });
+
     this.setState({
-      forms: updatedField,
+      forms: updatedForm,
     });
   }
 
   handleFieldClick = (data) => {
-    const { forms } = this.state;
-    const getForm = this.getFormData(forms[data.container_id], data.form_id);
-    const getFieldData = getForm.fields.find((field) => {
-      return field.id === data.field_id;
-    });
+    console.log(data);
     this.setState({
-      isDisplayed: !this.state.isDisplayed,
-      currentFieldEditData: {
-        ...getFieldData,
-        container_id: data.container_id,
-        form_id: data.form_id,
-      },
+      isDisplayed: true,
+      currentFieldEditData: data,
     });
   }
 
   render() {
     const { renderedForms, forms, isDisplayed, currentFieldEditData } = this.state;
+    const formArray = this.transformToArrays(forms);
     return (
       <div className="test">
         <header className="FormEditorHeader">
@@ -222,24 +219,23 @@ class FormArea extends Component {
         <div className="FormWrap">
           <div className="FormAreaScrollable" ref={(container) => this.containerRef = container }>
             <div id="FormArea">
-              {forms.map((form, index) => (
+              {formArray.map((form, index) => (
                 <FormContainer
                   key={index}
+                  forms={form}
                   containerIdx={index}
-                  forms={(Array.isArray(form) && form) || [{...form}]}
                   onDropFormItem={(containerIndexes, formId) => this.handleDropForm(containerIndexes, formId)}
                   onDropField={(lastFormID, formID, values) => this.handleDropField(lastFormID, formID, values) }
                   onFieldClick={(data) => this.handleFieldClick(data)}
                 />
               ))}
-              {/* <button className="addStep">Add Step</button> */}
             </div>
           </div>
           <FormToolbar
-            visible={isDisplayed}
-            formArray={forms}
+            forms={formArray}
             fieldData={currentFieldEditData}
-            onChange={(indexData, values) => this.handleFieldDataChanges(indexData, values)}
+            visible={isDisplayed}
+            handleChanges={(indexData, values) => this.handleFieldDataChanges(indexData, values)}
           />
         </div>
       </div>
