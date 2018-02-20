@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col, Tabs } from 'antd';
 import FormFieldListItem from './FormFieldListItem';
+import CaptorSettings from './CaptorSettings';
 import types from './types';
 
 const { TabPane } = Tabs;
@@ -9,52 +10,52 @@ class FormFieldList extends Component {
   state = {
     fields: [{
       id: '1',
-      title: 'Short Text',
+      label: 'Short Text',
       description: 'A multi-purpose text field',
       type: 'SHORT_TEXT',
       icon: 'edit',
     }, {
-      title: 'Email',
+      label: 'Email',
       id: '2',
       description: 'An input for email address',
       type: 'EMAIL_ADDRESS',
-      icon: 'edit',
+      icon: 'mail',
     }, {
-      title: 'Textarea',
+      label: 'Textarea',
       id: '3',
       description: 'An input for email address',
       type: 'TEXTAREA',
-      icon: 'edit',
+      icon: 'form',
     }, {
-      title: 'Multiple Choice',
+      label: 'Multiple Choice',
       id: '4',
       description: 'An input for email address',
       type: 'MULTIPLE_CHOICE',
-      icon: 'edit',
+      icon: 'bars',
     }, {
-      title: 'Checkbox',
+      label: 'Checkbox',
       id: '5',
       description: 'An input for email address',
       type: 'CHECKBOX',
-      icon: 'edit',
+      icon: 'check-square-o',
     }, {
-      title: 'Dropdown',
+      label: 'Dropdown',
       id: '6',
       description: 'An input for email address',
       type: 'DROPDOWN',
-      icon: 'edit',
+      icon: 'down',
     }, {
-      title: 'Datepicker',
+      label: 'Datepicker',
       id: '7',
       description: 'An input for email address',
       type: 'DATE',
-      icon: 'edit',
+      icon: 'calendar',
     }, {
-      title: 'File Upload',
+      label: 'File Upload',
       id: '8',
       description: 'An input for email address',
       type: 'FILE',
-      icon: 'edit',
+      icon: 'file',
     }],
   }
 
@@ -62,22 +63,18 @@ class FormFieldList extends Component {
     const { fields } = this.state;
     return (
       <div id="FormFieldList">
-        <Tabs>
+        <Tabs size="large" style={{ overflow: 'visible' }}>
           <TabPane key="fields" tab="Fields">
-            <Row gutter={8}>
+
               {fields.map(field => (
-                <Col
+                <FormFieldListItem
                   key={field.id}
-                  span={24}
-                  style={{ marginBottom: '18px' }}
-                >
-                  <FormFieldListItem
-                    key={field.id}
-                    fieldData={field}
-                  />
-                </Col>
+                  fieldData={field}
+                />
               ))}
-            </Row>
+          </TabPane>
+          <TabPane key="captor" tab="Captor Settings">
+              <CaptorSettings />
           </TabPane>
         </Tabs>
       </div>

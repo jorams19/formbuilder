@@ -30,20 +30,19 @@ class FormToolbar extends Component {
     return getForm.fields.find(field => field.id === field_id);
   }
   render() {
-    const { handleChanges, visible } = this.props;
+    const { handleChanges, visible, onCloseToolbar } = this.props;
     const { forms, fieldData } = this.state;
     let getFieldData = undefined;
-    // debugger;
     if(fieldData) {
       const { container_id, form_id } = fieldData;
       getFieldData = this.searchFieldData(forms, fieldData);
     }
-    console.log(this.props.fieldData);
     return (
       <div className={classNames('FormToolbar', { visible: visible })}>
         <Card
           title="Edit Field"
           className="FormToolbarCard"
+          extra={<a href="#" onClick={onCloseToolbar}>Close</a>}
         >
           <FormToolbarFieldForm
             indexData={fieldData}

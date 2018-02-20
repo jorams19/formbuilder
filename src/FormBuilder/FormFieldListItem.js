@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
-import { Card, Icon } from 'antd';
+import { Avatar, Icon } from 'antd';
 import shortid from 'shortid';
 import classNames from 'classnames';
 import types from './types';
@@ -9,7 +9,7 @@ const formItemSpecs = {
   beginDrag(props, monitor) {
     return {
       id: shortid.generate(),
-      title: props.fieldData.title,
+      label: props.fieldData.label,
       type: props.fieldData.type,
       prevForm: undefined,
     };
@@ -39,10 +39,16 @@ class FormFieldListItem extends Component {
   render() {
     const { fieldData, connectDragSource, isDragging } = this.props;
     return connectDragSource(
-      <div>
-        <Card className={classNames('FieldListItem', { isDragging })} hoverable>
-          <Icon type={fieldData.icon} style={{ marginRight: '24px' }}/><span>{fieldData.title}</span>
-        </Card>
+      <div className="FieldListItemWrap">
+        <div className={classNames('FieldListItem', { isDragging })}>
+          <div className="FieldIcon">
+            <Avatar icon={fieldData.icon} shape="square" style={{ backgroundColor: '#4497fb', marginRight: '12px' }}/>
+          </div>
+          <div className="FieldInfo">
+            <h4>{fieldData.label}</h4>
+            <small>{fieldData.description}</small>
+          </div>
+        </div>
       </div>
     );
   }

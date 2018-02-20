@@ -196,10 +196,15 @@ class FormArea extends Component {
   }
 
   handleFieldClick = (data) => {
-    console.log(data);
     this.setState({
       isDisplayed: true,
       currentFieldEditData: data,
+    });
+  }
+
+  handleCloseToolbar = () => {
+    this.setState({
+      isDisplayed: false,
     });
   }
 
@@ -208,14 +213,6 @@ class FormArea extends Component {
     const formArray = this.transformToArrays(forms);
     return (
       <div className="test">
-        <header className="FormEditorHeader">
-          <div className="CaptorTitle">
-            <h3>Captor Title</h3>
-          </div>
-          <div className="CaptorActions">
-            <button>Save</button>
-          </div>
-        </header>
         <div className="FormWrap">
           <div className="FormAreaScrollable" ref={(container) => this.containerRef = container }>
             <div id="FormArea">
@@ -235,6 +232,7 @@ class FormArea extends Component {
             forms={formArray}
             fieldData={currentFieldEditData}
             visible={isDisplayed}
+            onCloseToolbar={this.handleCloseToolbar}
             handleChanges={(indexData, values) => this.handleFieldDataChanges(indexData, values)}
           />
         </div>

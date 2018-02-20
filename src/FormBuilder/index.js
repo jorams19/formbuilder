@@ -7,14 +7,36 @@ import FormFieldList from './FormFieldList';
 import FormArea from './FormArea';
 import types from './types';
 
-const { Content, Sider } = Layout;
+const { Header, Content, Sider } = Layout;
 
 class FormBuilder extends Component {
+  state = {
+    collapsed: false,
+  }
+  onCollapse = () => {
+    this.setState({
+      collapsed: !this.state.collapsed,
+    });
+  }
   render() {
+    const { collapsed } = this.state;
     return (
       <Layout className="FormBuilder">
+        <Header className="FormEditorHeader">
+          <div className="CaptorTitle">
+            <h3>Captor Title</h3>
+          </div>
+          <div className="CaptorActions">
+            <button>Save</button>
+          </div>
+        </Header>
+        <Layout>
         <Sider
-          style={{ padding: '20px 32px', background: '#FFF', boxShadow: '0 2px 8px rgba(0,0,0,.09)' }}
+          onCollapse={this.onCollapse}
+          collapsed={collapsed}
+          collapsible
+          collapsedWidth={0}
+          style={{ background: '#FFF', boxShadow: '0 2px 8px rgba(0,0,0,.09)' }}
           width={300}
         >
           <FormFieldList />
@@ -22,6 +44,7 @@ class FormBuilder extends Component {
         <Content>
           <FormArea />
         </Content>
+        </Layout>
       </Layout>
     );
   }
