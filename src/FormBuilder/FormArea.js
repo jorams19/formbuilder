@@ -212,30 +212,28 @@ class FormArea extends Component {
     const { renderedForms, forms, isDisplayed, currentFieldEditData } = this.state;
     const formArray = this.transformToArrays(forms);
     return (
-      <div className="test">
-        <div className="FormWrap">
-          <div className="FormAreaScrollable" ref={(container) => this.containerRef = container }>
-            <div id="FormArea">
-              {formArray.map((form, index) => (
-                <FormContainer
-                  key={index}
-                  forms={form}
-                  containerIdx={index}
-                  onDropFormItem={(containerIndexes, formId) => this.handleDropForm(containerIndexes, formId)}
-                  onDropField={(lastFormID, formID, values) => this.handleDropField(lastFormID, formID, values) }
-                  onFieldClick={(data) => this.handleFieldClick(data)}
-                />
-              ))}
-            </div>
+      <div className="FormBox">
+        <div className="FormAreaScrollable" ref={(container) => this.containerRef = container }>
+          <div id="FormArea">
+            {formArray.map((form, index) => (
+              <FormContainer
+                key={index}
+                forms={form}
+                containerIdx={index}
+                onDropFormItem={(containerIndexes, formId) => this.handleDropForm(containerIndexes, formId)}
+                onDropField={(lastFormID, formID, values) => this.handleDropField(lastFormID, formID, values) }
+                onFieldClick={(data) => this.handleFieldClick(data)}
+              />
+            ))}
           </div>
-          <FormToolbar
+        </div>
+        <FormToolbar
             forms={formArray}
             fieldData={currentFieldEditData}
             visible={isDisplayed}
             onCloseToolbar={this.handleCloseToolbar}
             handleChanges={(indexData, values) => this.handleFieldDataChanges(indexData, values)}
           />
-        </div>
       </div>
     );
   }

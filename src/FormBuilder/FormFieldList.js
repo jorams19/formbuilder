@@ -63,7 +63,7 @@ class FormFieldList extends Component {
     const { fields } = this.state;
     return (
       <div id="FormFieldList">
-        <Tabs size="large" style={{ overflow: 'visible' }}>
+        <Tabs size="large" style={{ height: '100%', overflow: 'visible' }}>
           <TabPane key="fields" tab="Fields">
 
               {fields.map(field => (

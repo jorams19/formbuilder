@@ -24,7 +24,7 @@ class FormBuilder extends Component {
       <Layout className="FormBuilder">
         <Header className="FormEditorHeader">
           <div className="CaptorTitle">
-            <h3>Captor Title</h3>
+            <h3>Captors / Captor Title</h3>
           </div>
           <div className="CaptorActions">
             <button>Save</button>
@@ -41,7 +41,7 @@ class FormBuilder extends Component {
         >
           <FormFieldList />
         </Sider>
-        <Content>
+        <Content style={{ overflow: 'hidden' }}>
           <FormArea />
         </Content>
         </Layout>

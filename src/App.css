@@ -6,6 +6,12 @@
   background: #4496fb;
 }
 
+/* .ant-tabs:not(.ant-tabs-vertical)>.ant-tabs-content {
+  width: 100%;
+  height: calc(100% - 64px);
+  overflow: auto;
+} */
+
 .FormEditorHeader {
   display: flex;
   align-items: center;
@@ -34,6 +40,15 @@
 .CaptorSettings {
   padding: 24px;
 }
+#FormFieldList {
+  height: 100%;
+  /* overflow: hidden; */
+}
+.ant-tabs-content,
+.ant-tabs-tabpane {
+  height: calc(100% - 64px);
+  overflow: auto;
+}
 .FieldListItem {
   position: relative;
   display: flex;
@@ -56,6 +71,10 @@
   visibility: hidden;
 }
 
+.FormBox {
+  display: flex;
+  height: 100%;
+}
 .FormContainer {
   display: flex;
   align-items: flex-start;
@@ -139,8 +158,9 @@
 
 .FormAreaScrollable {
   flex: 1;
-  height: 100%;
+  height: 100vh;
   padding: 24px;
+  overflow: auto;
 }
 
 .FormToolbar {
@@ -155,4 +175,8 @@
 }
 .FormToolbarCard {
   height: 100%;
+}
+.FormToolbarCard .ant-card-body {
+  height: calc(100% - 56px);
+  overflow: auto;
 }
