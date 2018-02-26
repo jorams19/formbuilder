@@ -1,182 +1,100 @@
-.FormBuilder {
-  height: 100vh;
-}
-.ant-layout-sider {}
-.ant-layout-sider-zero-width-trigger {
-  background: #4496fb;
-}
-
-/* .ant-tabs:not(.ant-tabs-vertical)>.ant-tabs-content {
-  width: 100%;
-  height: calc(100% - 64px);
-  overflow: auto;
-} */
-
-.FormEditorHeader {
-  display: flex;
-  align-items: center;
-  background: #484747;
-  padding: 0 12px;
-  color: #FFF;
-}
-.CaptorTitle {
-  flex: 1;
-}
-.CaptorTitle h3 {
-  color: #FFF;
-  margin: 0;
-}
-.CaptorActions button {
-  background: #83ad69;
-  border: none;
-  padding: 8px 32px;
-  border-radius: 3px;
-  cursor: pointer;
-  line-height: 18px;
-}
-.ant-tabs-bar {
-  margin-bottom: 0;
-}
-.CaptorSettings {
-  padding: 24px;
-}
-#FormFieldList {
-  height: 100%;
-  /* overflow: hidden; */
-}
-.ant-tabs-content,
-.ant-tabs-tabpane {
-  height: calc(100% - 64px);
-  overflow: auto;
-}
-.FieldListItem {
-  position: relative;
-  display: flex;
-  align-items: center;
-  padding: 16px;
-  border-left: 0px solid #4496fb;
-  border-bottom: 1px solid #EEE;
-  cursor: -webkit-grab;
-  transition: border-left .2s ease;
-}
-.FieldListItem .FieldInfo h4 {
-  margin-bottom: 0;
-}
-
-.FieldListItem:hover {
-  background: #f8f8f8;
-  border-left-width: 5px;
-}
-.FieldListItem.isDragging {
-  visibility: hidden;
-}
-
-.FormBox {
-  display: flex;
-  height: 100%;
-}
-.FormContainer {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 16px;
-  margin-bottom: 30px;
-  min-height: 50px;
-  background: rgba(0,0,0,0.04);
-  border-radius: 3px;
-}
-.FormContainer.hovered {
-  background: rgba(0,0,0,0.2);
-}
-.FormItem {
-  position: relative;
-  background: #FFF;
-  width: 200px;
-  border-radius: 3px;
-  box-shadow: 0 2px 8px rgba(0,0,0,.09);
-  overflow: hidden;
-}
-.FormContainer .FormItem.isDragging {
-  visibility: hidden;
-}
-.FormContainer .FormItem.isDragging:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-  background: rgba(0,0,0,0.1);
-}
-.FormContainer .FormItem {
-  margin-right: 12px;
-}
-.FormContainer .FormItem:last-child {
-  margin-right: 0;
-}
-.FormItem-header {
-  background-color: #4497fb;
-  padding: 10px;
-  border-bottom: 1px solid #eee;
-  cursor: move;
-}
-.FormItem-header h5 {
-  margin-bottom: 0;
-  font-weight: 700;
-  color: #FFF;
-}
-.FormItem-droppable .FormItemDroppable {
-  padding: 8px 8px 32px;
-  background: rgba(0,0,0,0.05);
-}
-.FormItem-droppable .FormItemDroppable.hovered {
-  background: rgba(0,0,0,0.1);
-}
-
-.DroppableFieldItem {
-  background: #FFF;
-  margin-bottom: 8px;
-  padding: 8px;
-  border-radius: 3px;
-  box-shadow: 0 1px 0px 1px rgba(0,0,0,.09);
-  cursor: move;
-}
-.DroppableFieldItem.isDragging {
-  background: rgba(0,0,0,0.2);
-  box-shadow: none;
-  text-indent: -99999px;
-}
-.DroppableFieldItem h5 {
-  margin-bottom: 0;
-}
-
-.FormWrap {
-  display: flex;
-  height: 100vh;
-}
-
-.FormAreaScrollable {
-  flex: 1;
-  height: 100vh;
-  padding: 24px;
-  overflow: auto;
-}
-
-.FormToolbar {
-  width: 0;
-  height: 100%;
-  background: #FFF;
-  flex-basis: 0;
-  transition: flex-basis .2s ease;
-}
-.FormToolbar.visible {
-  flex-basis: 350px;
-}
-.FormToolbarCard {
-  height: 100%;
-}
-.FormToolbarCard .ant-card-body {
-  height: calc(100% - 56px);
-  overflow: auto;
-}
+.CaptorBuilderLayout {
+  height: 100vh; }
+  .CaptorBuilderLayout .CaptorBuilderHeader {
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    background-color: #FFF;
+    height: 80px;
+    line-height: 80px;
+    border-bottom: 1px solid #EEE; }
+    .CaptorBuilderLayout .CaptorBuilderHeader .CaptorBuilderHeader-title, .CaptorBuilderLayout .CaptorBuilderHeader .CaptorBuilderHeader-action {
+      display: inline-flex; }
+  .CaptorBuilderLayout .CaptorBuilderLayoutContent {
+    height: calc(100vh - 80px); }
+    .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderNav {
+      height: 100%;
+      padding: 12px; }
+      .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderNav .ant-menu-item {
+        border-radius: 3px;
+        padding: 0 16px !important;
+        line-height: 58px;
+        height: 48px; }
+    .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent {
+      display: flex;
+      height: 100%;
+      overflow: hidden; }
+      .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorPanelHeader {
+        border-bottom: 1px solid #EEE; }
+        .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorPanelHeader .CaptorPanelHeader-title {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0px 24px;
+          height: 64px; }
+          .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorPanelHeader .CaptorPanelHeader-title span {
+            font-weight: 700;
+            text-transform: uppercase; }
+          .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorPanelHeader .CaptorPanelHeader-title .ant-btn {
+            height: initial;
+            padding: 0;
+            border: 0;
+            background-color: transparent;
+            line-height: 1; }
+            .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorPanelHeader .CaptorPanelHeader-title .ant-btn .anticon {
+              font-size: 20px; }
+        .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorPanelHeader .CaptorPanelHeader-actions {
+          padding: 0px 24px;
+          margin-bottom: 24px; }
+          .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorPanelHeader .CaptorPanelHeader-actions .ant-btn {
+            margin-right: 12px;
+            background-color: transparent;
+            border: 0;
+            padding: 0; }
+      .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorToolbar {
+        flex-basis: 0px;
+        display: none;
+        background-color: #f8f8f8;
+        border-right: 1px solid #EEE;
+        height: 100%; }
+        .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorToolbar.visible {
+          display: block;
+          flex-basis: 320px; }
+        .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorToolbar .CaptorToolbarBody {
+          padding: 24px;
+          height: calc(100% - 64px);
+          overflow: auto; }
+          .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorToolbar .CaptorToolbarBody.has-actions {
+            height: calc(100% - 120px); }
+        .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorToolbar .CaptorFieldList {
+          height: 100%; }
+          .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorToolbar .CaptorFieldList .CaptorField {
+            display: flex;
+            background-color: #FFF;
+            margin-bottom: 16px;
+            border-radius: 4px;
+            padding: 8px;
+            box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.04);
+            cursor: move;
+            cursor: -webkit-drag;
+            align-items: center; }
+            .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorToolbar .CaptorFieldList .CaptorField h4 {
+              margin-bottom: 0; }
+        .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorToolbar .CaptorFieldSettings {
+          height: 100%; }
+          .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorToolbar .CaptorFieldSettings .FieldSettings .FieldSettingItem {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 0;
+            border-bottom: 1px solid #EEE; }
+      .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorDroppable {
+        flex-basis: 560px;
+        background-color: #FFF;
+        border-right: 1px solid #EEE; }
+        .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorDroppable .CaptorFieldItem {
+          display: flex;
+          background-color: rgba(29, 142, 251, 0.08);
+          padding: 32px; }
+          .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorDroppable .CaptorFieldItem .CaptorFieldItem-handle {
+            cursor: pointer; }

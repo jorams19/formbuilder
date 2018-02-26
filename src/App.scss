@@ -1,0 +1,130 @@
+.CaptorBuilderLayout {
+  height: 100vh;
+  .CaptorBuilderHeader {
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    background-color: #FFF;
+    height: 80px;
+    line-height: 80px;
+    border-bottom: 1px solid #EEE;
+    .CaptorBuilderHeader {
+      &-title,
+      &-action {
+        display: inline-flex;
+      }
+    }
+  }
+  .CaptorBuilderLayoutContent {
+    height: calc(100vh - 80px);
+    .CaptorBuilderNav {
+      height: 100%;
+      padding: 12px;
+      .ant-menu-item {
+        border-radius: 3px;
+        padding: 0 16px !important;
+        line-height: 58px;
+        height: 48px;
+      }
+    }
+    .CaptorBuilderContent {
+      display: flex;
+      height: 100%;
+      overflow: hidden;
+      .CaptorPanelHeader {
+        border-bottom: 1px solid #EEE;
+        .CaptorPanelHeader {
+          &-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0px 24px;
+            height: 64px;
+            span { font-weight: 700; text-transform: uppercase; }
+            .ant-btn {
+              height: initial;
+              padding: 0;
+              border: 0;
+              background-color: transparent;
+              line-height: 1;
+              .anticon {
+                font-size: 20px;
+              }
+            }
+          }
+          &-actions {
+            padding: 0px 24px;
+            margin-bottom: 24px;
+            .ant-btn {
+              margin-right: 12px;
+              background-color: transparent;
+              border: 0;
+              padding: 0;
+            }
+          }
+        }
+      }
+      .CaptorToolbar {
+        flex-basis: 0px;
+        display: none;
+        background-color: #f8f8f8;
+        border-right: 1px solid #EEE;
+        height: 100%;
+        &.visible {
+          display: block;
+          flex-basis: 320px;
+        }
+        .CaptorToolbarBody {
+          padding: 24px;
+          height: calc(100% - 64px);
+          overflow: auto;
+          &.has-actions {
+            height: calc(100% - 120px);
+          }
+        }
+        .CaptorFieldList {
+          height: 100%;
+          .CaptorField {
+            display: flex;
+            background-color: #FFF;
+            margin-bottom: 16px;
+            border-radius: 4px;
+            padding: 8px;
+            box-shadow: 0px 2px 3px 1px rgba(0,0,0,0.04);
+            cursor: move;
+            cursor: -webkit-drag;
+            align-items: center;
+            h4 { margin-bottom: 0; }
+          }
+        }
+        .CaptorFieldSettings {
+          height: 100%;
+          .FieldSettings {
+            .FieldSettingItem {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              padding: 18px 0;
+              border-bottom: 1px solid #EEE;
+            }
+          }
+        }
+      }
+      .CaptorDroppable {
+        flex-basis: 560px;
+        background-color: #FFF;
+        border-right: 1px solid #EEE;
+        .CaptorFieldItem {
+          display: flex;
+          background-color: rgba(29,142,251,.08);
+          padding: 32px;
+          .CaptorFieldItem {
+            &-handle {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}

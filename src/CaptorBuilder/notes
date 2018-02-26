@@ -1,0 +1,26 @@
+index 
+  - data here
+  - Main Layout
+    - CaptorBuilder (use flex)
+      - CaptorNav
+      - CaptorToolbar (closable)
+      - CaptorDroppable
+
+CaptorNav
+  - Sider
+
+CaptorToolbar 
+  - FieldList
+  - FormSetting
+  - FieldSetting
+  - CaptorSetting
+
+CaptorDroppable
+  - has <FormItem />
+    - has FieldItem
+  
+    
+
+Notes:
+  - When selecting type, field must update its settings in CaptorDroppable
+  - 

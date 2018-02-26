@@ -10,14 +10,7 @@ import types from './types';
 const { Header, Content, Sider } = Layout;
 
 class FormBuilder extends Component {
-  state = {
-    collapsed: false,
-  }
-  onCollapse = () => {
-    this.setState({
-      collapsed: !this.state.collapsed,
-    });
-  }
+
   render() {
     const { collapsed } = this.state;
     return (
