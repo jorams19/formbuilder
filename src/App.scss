@@ -73,6 +73,9 @@
         &.visible {
           display: block;
           flex-basis: 320px;
+          &.wide {
+            flex-basis: 440px;
+          }
         }
         .CaptorToolbarBody {
           padding: 24px;
@@ -107,6 +110,12 @@
               padding: 18px 0;
               border-bottom: 1px solid #EEE;
             }
+          }
+        }
+        .CaptorLogicJump {
+          height: 100%;
+          .CaptorLogicJumpItem {
+            margin-bottom: 24px;
           }
         }
       }

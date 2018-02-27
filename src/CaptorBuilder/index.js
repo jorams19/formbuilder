@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { Layout, Menu, Icon, Button } from 'antd';
 import classNames from 'classnames';
+import includes from 'lodash/includes';
 import 'antd/dist/antd.min.css';
 
 import CaptorToolbar from './CaptorToolbar';
@@ -13,7 +14,7 @@ const { Item } = Menu;
 class CaptorBuilder extends Component {
   state = {
     isToolbarVisible: false,
-    activeToolbarPanel: '',
+    activeToolbarPanel: undefined,
   };
   onDragStart= () => {
     console.log('drag start');
@@ -24,14 +25,21 @@ class CaptorBuilder extends Component {
   }
 
   handleMenuClick = ({ item, key, selectedKeys}) => {
-    // const { }
-    console.log(key);
-    this.setState((prevState) => {
-      return {
-        isToolbarVisible: !prevState.isToolbarVisible,
-        activeToolbarPanel: key,
-      };
+    const { activeToolbarPanel } = this.state;
+    if(activeToolbarPanel === key) {
+      this.setState((prevState) => {
+        return {
+          isToolbarVisible: !prevState.isToolbarVisible,
+        }
+      });
+    } else {
+      this.setState((prevState) => {
+        return {
+          isToolbarVisible: true,
+          activeToolbarPanel: key,
+        };
     });
+    }
   }
 
   handleCloseToolbar = () => {
@@ -97,10 +105,15 @@ class CaptorBuilder extends Component {
               >
                 <Item key="fieldsList"><Icon style={{ fontSize: '24px' }} type="inbox" /><span>Fields</span></Item>
                 <Item key="fieldSettings"><Icon style={{ fontSize: '24px' }} type="tool" /><span>Field Settings</span></Item>
+                <Item key="logicJump"><Icon style={{ fontSize: '24px' }} type="share-alt" /><span>Logic Jump</span></Item>
+                <Item key="calculator"><Icon style={{ fontSize: '24px' }} type="calculator" /><span>Calculator</span></Item>
               </Menu>
             </Sider>
             <Content className="CaptorBuilderContent">
-              <CaptorToolbar className={classNames('CaptorToolbar', { visible: isToolbarVisible})} panel={activeToolbarPanel}/>
+              <CaptorToolbar
+                className={classNames('CaptorToolbar', { visible: isToolbarVisible, wide: includes(['logicJump','calculator'], activeToolbarPanel)})}
+                panel={activeToolbarPanel}
+              />
               <CaptorDroppable className="CaptorDroppable" />
             </Content>
           </Layout>

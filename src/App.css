@@ -60,6 +60,8 @@
         .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorToolbar.visible {
           display: block;
           flex-basis: 320px; }
+          .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorToolbar.visible.wide {
+            flex-basis: 440px; }
         .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorToolbar .CaptorToolbarBody {
           padding: 24px;
           height: calc(100% - 64px);
@@ -88,6 +90,10 @@
             justify-content: space-between;
             padding: 18px 0;
             border-bottom: 1px solid #EEE; }
+        .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorToolbar .CaptorLogicJump {
+          height: 100%; }
+          .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorToolbar .CaptorLogicJump .CaptorLogicJumpItem {
+            margin-bottom: 24px; }
       .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorDroppable {
         flex-basis: 560px;
         background-color: #FFF;
