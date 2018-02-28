@@ -148,7 +148,9 @@
         background: #f6fbff; }
         .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorPreview .CaptorPreviewScrollable {
           overflow: auto;
-          height: 100%; }
+          height: 100%;
+          padding-left: 24px;
+          padding-right: 24px; }
           .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorPreview .CaptorPreviewScrollable:before, .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorPreview .CaptorPreviewScrollable:after {
             content: ' ';
             width: 100%;
@@ -161,16 +163,11 @@
             width: 100%;
             margin: 0 auto; }
             .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorPreview .CaptorPreviewScrollable .CaptorElementsWrap .FieldCard {
-              box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.04);
-              background-color: #FFF;
-              margin-bottom: 24px;
-              padding: 36px;
+              background-color: transparent;
               border-radius: 4px;
+              margin-bottom: 24px;
               opacity: 0.5;
               pointer-events: none; }
-              .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorPreview .CaptorPreviewScrollable .CaptorElementsWrap .FieldCard.active {
-                opacity: 1;
-                pointer-events: all; }
               .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorPreview .CaptorPreviewScrollable .CaptorElementsWrap .FieldCard label {
                 display: block;
                 font-size: 24px;
@@ -178,6 +175,7 @@
                 letter-spacing: .01em;
                 color: #555; }
               .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorPreview .CaptorPreviewScrollable .CaptorElementsWrap .FieldCard input {
+                background-color: transparent;
                 border: none;
                 border-bottom: 1px solid #EEE;
                 width: 100%;
@@ -185,6 +183,12 @@
                 padding-bottom: 16px;
                 font-size: 18px;
                 outline: none; }
+              .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorPreview .CaptorPreviewScrollable .CaptorElementsWrap .FieldCard.active {
+                box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.04);
+                background-color: #FFF;
+                padding: 36px;
+                opacity: 1;
+                pointer-events: all; }
         .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorPreview .CaptorPrevewActions {
           position: fixed;
           bottom: 24px;
