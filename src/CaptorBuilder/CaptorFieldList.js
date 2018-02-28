@@ -11,13 +11,13 @@ class CaptorFieldList extends Component {
       id: '1',
       label: 'Short Text',
       description: 'A multi-purpose text field',
-      type: 'SHORT_TEXT',
+      type: 'TEXT',
       icon: 'edit',
     }, {
       label: 'Email',
       id: '2',
       description: 'An input for email address',
-      type: 'EMAIL_ADDRESS',
+      type: 'EMAIL',
       icon: 'mail',
     }, {
       label: 'Textarea',
@@ -29,41 +29,35 @@ class CaptorFieldList extends Component {
       label: 'Multiple Choice',
       id: '4',
       description: 'An input for email address',
-      type: 'MULTIPLE_CHOICE',
+      type: 'MULTIPLE',
       icon: 'bars',
     }, {
-      label: 'Checkbox',
-      id: '5',
-      description: 'An input for email address',
-      type: 'CHECKBOX',
-      icon: 'check-square-o',
-    }, {
       label: 'Dropdown',
-      id: '6',
+      id: '5',
       description: 'An input for email address',
       type: 'DROPDOWN',
       icon: 'down',
     }, {
       label: 'Datepicker',
-      id: '7',
+      id: '6',
       description: 'An input for email address',
       type: 'DATE',
       icon: 'calendar',
     }, {
       label: 'Opinion Scale',
-      id: '8',
+      id: '7',
       description: 'An input for email address',
       type: 'OPINION',
       icon: 'star',
     }, {
       label: 'Rating',
-      id: '9',
+      id: '8',
       description: 'An input for email address',
       type: 'RATING',
       icon: 'heart',
     }, {
       label: 'File Upload',
-      id: '10',
+      id: '9',
       description: 'An input for email address',
       type: 'FILE',
       icon: 'file',
@@ -87,6 +81,7 @@ class CaptorFieldList extends Component {
                     field={field}
                   />
                 ))}
+                {provided.placeholder}
               </div>
             )}
           </Droppable>

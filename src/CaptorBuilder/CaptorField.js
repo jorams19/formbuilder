@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import { Avatar } from 'antd';
+import classNames from 'classnames';
+import fieldColors from './fieldColors';
 
 class CaptorField extends Component {
   render() {
@@ -13,20 +15,25 @@ class CaptorField extends Component {
       >
         {(provided, snapshot) => {
           return (
-            <div
-              ref={provided.innerRef}
-              className="CaptorField"
-            >
-              <div className="CaptorFieldIcon">
-                <Avatar
-                  icon={field.icon}
-                  shape="square"
-                  style={{ backgroundColor: '#4497fb', marginRight: '12px' }}/>
+            <div>
+              <div
+                ref={provided.innerRef}
+                {...provided.draggableProps}
+                {...provided.dragHandleProps}
+                className={classNames('CaptorField', { isDragging: snapshot.isDragging })}
+              >
+                <div className="CaptorFieldIcon">
+                  <Avatar
+                    icon={field.icon}
+                    shape="square"
+                    style={{ backgroundColor: fieldColors[field.type], marginRight: '12px' }}/>
+                </div>
+                <div className="CaptorFieldLabel">
+                  <h4>{field.label}</h4>
+                  <small>{field.description}</small>
+                </div>
               </div>
-              <div className="CaptorFieldLabel">
-                <h4>{field.label}</h4>
-                <small>{field.description}</small>
-              </div>
+              {provided.placeholder}
             </div>
           );
         }}

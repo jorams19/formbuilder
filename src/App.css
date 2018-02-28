@@ -77,11 +77,14 @@
             border-radius: 4px;
             padding: 8px;
             box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.04);
+            outline: none;
             cursor: move;
             cursor: -webkit-drag;
             align-items: center; }
             .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorToolbar .CaptorFieldList .CaptorField h4 {
               margin-bottom: 0; }
+            .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorToolbar .CaptorFieldList .CaptorField.isDragging .CaptorFieldIcon .ant-avatar {
+              background-color: #fcdb51 !important; }
         .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorToolbar .CaptorFieldSettings {
           height: 100%; }
           .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorToolbar .CaptorFieldSettings .FieldSettings .FieldSettingItem {
@@ -97,10 +100,95 @@
       .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorDroppable {
         flex-basis: 560px;
         background-color: #FFF;
-        border-right: 1px solid #EEE; }
+        border-right: 1px solid #EEE;
+        position: relative; }
+        .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorDroppable .placeholder {
+          position: absolute;
+          display: none;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 0;
+          background: url("/images/debut-light.png");
+          -webkit-animation: 100s scroll infinite linear;
+          -moz-animation: 100s scroll infinite linear;
+          -o-animation: 100s scroll infinite linear;
+          -ms-animation: 100s scroll infinite linear;
+          animation: 100s scroll infinite linear; }
+        .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorDroppable.isDraggingOver .placeholder {
+          display: block; }
         .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorDroppable .CaptorFieldItem {
           display: flex;
-          background-color: rgba(29, 142, 251, 0.08);
-          padding: 32px; }
-          .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorDroppable .CaptorFieldItem .CaptorFieldItem-handle {
-            cursor: pointer; }
+          position: relative;
+          padding: 32px;
+          z-index: 10;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.06); }
+          .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorDroppable .CaptorFieldItem ::-webkit-input-placeholder {
+            color: #555; }
+          .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorDroppable .CaptorFieldItem ::-moz-placeholder {
+            color: #555; }
+          .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorDroppable .CaptorFieldItem :-ms-input-placeholder {
+            color: #555; }
+          .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorDroppable .CaptorFieldItem :-moz-placeholder {
+            color: #555; }
+          .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorDroppable .CaptorFieldItem .ant-input-affix-wrapper .ant-input {
+            padding-left: 24px; }
+          .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorDroppable .CaptorFieldItem .ant-input {
+            background-color: transparent;
+            border: none;
+            padding: 0;
+            box-shadow: none; }
+            .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorDroppable .CaptorFieldItem .ant-input-lg {
+              height: 24px;
+              font-size: 24px; }
+      .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorPreview {
+        flex: 1;
+        height: 100%;
+        background: #f6fbff; }
+        .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorPreview .CaptorPreviewScrollable {
+          max-width: 600px;
+          width: 100%;
+          margin: 0 auto;
+          margin-top: 250px;
+          overflow: hidden;
+          height: calc(100% - 250px); }
+          .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorPreview .CaptorPreviewScrollable .FieldCard {
+            box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.04);
+            background-color: #FFF;
+            padding: 36px;
+            border-radius: 4px; }
+            .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorPreview .CaptorPreviewScrollable .FieldCard label {
+              display: block;
+              font-size: 24px;
+              margin-bottom: 12px;
+              letter-spacing: .01em;
+              color: #555; }
+            .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorPreview .CaptorPreviewScrollable .FieldCard input {
+              border: none;
+              border-bottom: 1px solid #EEE;
+              width: 100%;
+              padding-top: 16px;
+              padding-bottom: 16px;
+              font-size: 18px;
+              outline: none; }
+
+@-webkit-keyframes scroll {
+  100% {
+    background-position: 3000px 0px; } }
+
+@-moz-keyframes scroll {
+  100% {
+    background-position: 3000px 0px; } }
+
+@-o-keyframes scroll {
+  100% {
+    background-position: 3000px 0px; } }
+
+@-ms-keyframes scroll {
+  100% {
+    background-position: 3000px 0px; } }
+
+@keyframes scroll {
+  100% {
+    background-position: 3000px 0px; } }

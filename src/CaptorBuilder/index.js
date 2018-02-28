@@ -7,6 +7,7 @@ import 'antd/dist/antd.min.css';
 
 import CaptorToolbar from './CaptorToolbar';
 import CaptorDroppable from './CaptorDroppable';
+import CaptorPreview from './CaptorPreview';
 
 const { Sider, Header, Content } = Layout;
 const { Item } = Menu;
@@ -115,6 +116,7 @@ class CaptorBuilder extends Component {
                 panel={activeToolbarPanel}
               />
               <CaptorDroppable className="CaptorDroppable" />
+              <CaptorPreview />
             </Content>
           </Layout>
         </Layout>

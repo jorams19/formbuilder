@@ -29,6 +29,7 @@
     "react-beautiful-dnd": "^5.0.0",
     "react-dnd": "^2.5.4",
     "react-dnd-html5-backend": "^2.5.4",
+    "react-scroll": "^1.7.7",
     "shortid": "^2.2.8"
   }
 }
