@@ -15,7 +15,7 @@ const { Item } = Menu;
 class CaptorBuilder extends Component {
   state = {
     isToolbarVisible: false,
-    activeToolbarPanel: undefined,
+    activeToolbarPanel: 'fieldsList',
   };
   onDragStart= () => {
     console.log('drag start');
