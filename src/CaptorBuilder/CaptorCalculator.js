@@ -7,12 +7,13 @@ const { Option } = Select;
 
 class CaptorCalculator extends Component {
   render() {
+    const { onToolbarClose } = this.props;
     return (
       <div className="CaptorCalculator">
         <div className="CaptorToolbarHeader CaptorPanelHeader">
           <div className="CaptorPanelHeader-title">
             <span>Calculator</span>
-            <Button icon="close-square" title="Close Panel" />
+            <Button onClick={onToolbarClose} icon="close-square" title="Close Panel" />
           </div>
         </div>
         <div className="CaptorToolbarBody">

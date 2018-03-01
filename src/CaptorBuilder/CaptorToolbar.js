@@ -6,11 +6,12 @@ import CaptorCalculator from './CaptorCalculator';
 
 class CaptorToolbar extends Component {
   displayPanel = (panel) => {
+    const { onToolbarClose } = this.props;
     switch(panel) {
-      case 'fieldsList': return (<CaptorFieldList />);
-      case 'fieldSettings': return (<CaptorFieldSettings />);
-      case 'logicJump': return (<CaptorLogicJump />);
-      case 'calculator': return (<CaptorCalculator />);
+      case 'fieldsList': return (<CaptorFieldList onToolbarClose={onToolbarClose}/>);
+      case 'fieldSettings': return (<CaptorFieldSettings onToolbarClose={onToolbarClose}/>);
+      case 'logicJump': return (<CaptorLogicJump onToolbarClose={onToolbarClose}/>);
+      case 'calculator': return (<CaptorCalculator onToolbarClose={onToolbarClose}/>);
       default: return (<CaptorFieldList />);
     }
   }

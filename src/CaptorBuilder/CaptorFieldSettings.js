@@ -6,13 +6,13 @@ const { Option } = Select;
 
 class CaptorFieldSettings extends Component {
   render() {
-    const { className } = this.props;
+    const { className, onToolbarClose } = this.props;
     return (
       <div className={`CaptorFieldSettings ${className}`}>
         <div className="CaptorToolbarHeader CaptorPanelHeader">
           <div className="CaptorPanelHeader-title">
             <span>Field Settings</span>
-            <Button icon="close-square" title="Close Panel" />
+            <Button onClick={onToolbarClose} icon="close-square" title="Close Panel" />
           </div>
           <div className="CaptorPanelHeader-actions">
 

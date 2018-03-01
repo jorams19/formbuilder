@@ -1,5 +1,8 @@
 .CaptorBuilderLayout {
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex: auto;
   .CaptorBuilderHeader {
     align-items: center;
     justify-content: space-between;
@@ -17,14 +20,38 @@
   }
   .CaptorBuilderLayoutContent {
     height: calc(100vh - 80px);
-    .CaptorBuilderNav {
-      height: 100%;
-      padding: 12px;
-      .ant-menu-item {
-        border-radius: 3px;
-        padding: 0 16px !important;
-        line-height: 58px;
-        height: 48px;
+    display: flex;
+    flex: auto;
+    .CaptorBuilderSider {
+      flex: 0 0 80px;
+      max-width: 80px;
+      min-width: 80px;
+      width: 80px;
+      border-right: 1px solid #e8e8e8;
+      background-color: #FFF;
+      .CaptorBuilderNav {
+        height: 100%;
+        padding: 12px;
+        list-style: none;
+        margin: 0;
+        li {
+          border-radius: 4px;
+          padding: 0 16px;
+          line-height: 58px;
+          height: 48px;
+          margin-bottom: 8px;
+          &:hover,
+          &.active {
+            background-color: #EEE;
+          }
+          cursor: pointer;
+          i {
+            font-size: 24px;
+          }
+          span {
+            display: none;
+          }
+        }
       }
     }
     .CaptorBuilderContent {
@@ -209,22 +236,28 @@
               margin-bottom: 24px;
               opacity: 0.5;
               pointer-events: none;
-              label {
+              transition: all .2s ease-in;
+              > label {
                 display: block;
                 font-size: 24px;
-                margin-bottom: 12px;
+                margin-bottom: 24px;
                 letter-spacing: .01em;
                 color: #555;
               }
-              input {
+              .ant-input,
+              .ant-calendar-picker {
+                width: 100%;
+              }
+              .ant-input {
                 background-color: transparent;
                 border: none;
+                border-radius: 0;
                 border-bottom: 1px solid #EEE;
                 width: 100%;
-                padding-top: 16px;
-                padding-bottom: 16px;
+                padding: 16px 0;
                 font-size: 18px;
                 outline: none;
+                box-shadow: none;
               }
               &.active {
                 box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.04);

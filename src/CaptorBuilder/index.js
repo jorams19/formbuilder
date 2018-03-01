@@ -15,17 +15,15 @@ const { Item } = Menu;
 class CaptorBuilder extends Component {
   state = {
     isToolbarVisible: false,
-    activeToolbarPanel: 'fieldsList',
+    activeToolbarPanel: '',
   };
   onDragStart= () => {
-    console.log('drag start');
   }
   onDragEnd = () => {
     // Drag end here
-    console.log('end Drag');
   }
 
-  handleMenuClick = ({ item, key, selectedKeys}) => {
+  handleMenuClick = (e, key) => {
     const { activeToolbarPanel } = this.state;
     if(activeToolbarPanel === key) {
       this.setState((prevState) => {
@@ -44,17 +42,36 @@ class CaptorBuilder extends Component {
   }
 
   handleCloseToolbar = () => {
-
+    this.setState({
+      isToolbarVisible: false,
+    });
   }
 
   render() {
     const { isToolbarVisible, activeToolbarPanel } = this.state;
+    const menuItems = [{
+        title: 'Fields',
+        key: 'fieldsList',
+        icon: 'inbox',
+      }, {
+        title: 'Field Settings',
+        key: 'fieldSettings',
+        icon: 'tool',
+      }, {
+        title: 'Logic Jump',
+        key: 'logicJump',
+        icon: 'share-alt',
+      }, {
+        title: 'Calculator',
+        key: 'calculator',
+        icon: 'calculator',
+      }];
     return (
       <DragDropContext
         onDragStart={this.onDragStart}
         onDragEnd={this.onDragEnd}
       >
-        <Layout className="CaptorBuilderLayout">
+        <div className="CaptorBuilderLayout">
           <Header className="CaptorBuilderHeader">
             <div className="CaptorBuilderHeader-title">
               <svg xmlns="http://www.w3.org/2000/svg" width="100" height="52" viewBox="844.346 223.527 200 52.947">
@@ -95,31 +112,31 @@ class CaptorBuilder extends Component {
               <Button type="primary">Save Captor</Button>
             </div>
           </Header>
-          <Layout className="CaptorBuilderLayoutContent">
-            <Sider
-              collapsed={true}
-            >
-              <Menu
-                className="CaptorBuilderNav"
-                mode="inline"
-                onClick={this.handleMenuClick}
-              >
-                <Item key="fieldsList"><Icon style={{ fontSize: '24px' }} type="inbox" /><span>Fields</span></Item>
-                <Item key="fieldSettings"><Icon style={{ fontSize: '24px' }} type="tool" /><span>Field Settings</span></Item>
-                <Item key="logicJump"><Icon style={{ fontSize: '24px' }} type="share-alt" /><span>Logic Jump</span></Item>
-                <Item key="calculator"><Icon style={{ fontSize: '24px' }} type="calculator" /><span>Calculator</span></Item>
-              </Menu>
-            </Sider>
+          <div className="CaptorBuilderLayoutContent">
+            <div className="CaptorBuilderSider">
+              <ul className="CaptorBuilderNav">
+                {menuItems.map((item) => {
+                  const isActive = (item.key === activeToolbarPanel && isToolbarVisible === true) ? true: false;
+                  return (
+                    <li className={classNames({ active: isActive })} onClick={(e) => this.handleMenuClick(e, item.key)} key={item.key}>
+                      <Icon style={{ fontSize: '24px' }} type={item.icon} />
+                      <span>{item.title}</span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
             <Content className="CaptorBuilderContent">
               <CaptorToolbar
                 className={classNames('CaptorToolbar', { visible: isToolbarVisible, wide: includes(['logicJump','calculator'], activeToolbarPanel)})}
                 panel={activeToolbarPanel}
+                onToolbarClose={this.handleCloseToolbar}
               />
               <CaptorDroppable className="CaptorDroppable" />
               <CaptorPreview />
             </Content>
-          </Layout>
-        </Layout>
+          </div>
+        </div>
       </DragDropContext>
     );
   }

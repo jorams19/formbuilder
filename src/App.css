@@ -1,5 +1,8 @@
 .CaptorBuilderLayout {
-  height: 100vh; }
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex: auto; }
   .CaptorBuilderLayout .CaptorBuilderHeader {
     align-items: center;
     justify-content: space-between;
@@ -11,15 +14,34 @@
     .CaptorBuilderLayout .CaptorBuilderHeader .CaptorBuilderHeader-title, .CaptorBuilderLayout .CaptorBuilderHeader .CaptorBuilderHeader-action {
       display: inline-flex; }
   .CaptorBuilderLayout .CaptorBuilderLayoutContent {
-    height: calc(100vh - 80px); }
-    .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderNav {
-      height: 100%;
-      padding: 12px; }
-      .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderNav .ant-menu-item {
-        border-radius: 3px;
-        padding: 0 16px !important;
-        line-height: 58px;
-        height: 48px; }
+    height: calc(100vh - 80px);
+    display: flex;
+    flex: auto; }
+    .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderSider {
+      flex: 0 0 80px;
+      max-width: 80px;
+      min-width: 80px;
+      width: 80px;
+      border-right: 1px solid #e8e8e8;
+      background-color: #FFF; }
+      .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderSider .CaptorBuilderNav {
+        height: 100%;
+        padding: 12px;
+        list-style: none;
+        margin: 0; }
+        .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderSider .CaptorBuilderNav li {
+          border-radius: 4px;
+          padding: 0 16px;
+          line-height: 58px;
+          height: 48px;
+          margin-bottom: 8px;
+          cursor: pointer; }
+          .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderSider .CaptorBuilderNav li:hover, .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderSider .CaptorBuilderNav li.active {
+            background-color: #EEE; }
+          .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderSider .CaptorBuilderNav li i {
+            font-size: 24px; }
+          .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderSider .CaptorBuilderNav li span {
+            display: none; }
     .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent {
       display: flex;
       height: 100%;
@@ -167,22 +189,27 @@
               border-radius: 4px;
               margin-bottom: 24px;
               opacity: 0.5;
-              pointer-events: none; }
-              .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorPreview .CaptorPreviewScrollable .CaptorElementsWrap .FieldCard label {
+              pointer-events: none;
+              transition: all .2s ease-in; }
+              .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorPreview .CaptorPreviewScrollable .CaptorElementsWrap .FieldCard > label {
                 display: block;
                 font-size: 24px;
-                margin-bottom: 12px;
+                margin-bottom: 24px;
                 letter-spacing: .01em;
                 color: #555; }
-              .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorPreview .CaptorPreviewScrollable .CaptorElementsWrap .FieldCard input {
+              .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorPreview .CaptorPreviewScrollable .CaptorElementsWrap .FieldCard .ant-input,
+              .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorPreview .CaptorPreviewScrollable .CaptorElementsWrap .FieldCard .ant-calendar-picker {
+                width: 100%; }
+              .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorPreview .CaptorPreviewScrollable .CaptorElementsWrap .FieldCard .ant-input {
                 background-color: transparent;
                 border: none;
+                border-radius: 0;
                 border-bottom: 1px solid #EEE;
                 width: 100%;
-                padding-top: 16px;
-                padding-bottom: 16px;
+                padding: 16px 0;
                 font-size: 18px;
-                outline: none; }
+                outline: none;
+                box-shadow: none; }
               .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorPreview .CaptorPreviewScrollable .CaptorElementsWrap .FieldCard.active {
                 box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.04);
                 background-color: #FFF;
