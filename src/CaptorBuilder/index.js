@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
-import { Layout, Menu, Icon, Button } from 'antd';
+import { Icon, Button } from 'antd';
 import classNames from 'classnames';
 import includes from 'lodash/includes';
 import 'antd/dist/antd.min.css';
@@ -8,9 +8,6 @@ import 'antd/dist/antd.min.css';
 import CaptorToolbar from './CaptorToolbar';
 import CaptorDroppable from './CaptorDroppable';
 import CaptorPreview from './CaptorPreview';
-
-const { Sider, Header, Content } = Layout;
-const { Item } = Menu;
 
 class CaptorBuilder extends Component {
   state = {
@@ -84,7 +81,7 @@ class CaptorBuilder extends Component {
         onDragEnd={this.onDragEnd}
       >
         <div className="CaptorBuilderLayout">
-          <Header className="CaptorBuilderHeader">
+          <header className="CaptorBuilderHeader">
             <div className="CaptorBuilderHeader-title">
               <svg xmlns="http://www.w3.org/2000/svg" width="100" height="52" viewBox="844.346 223.527 200 52.947">
                 <linearGradient id="a" gradientUnits="userSpaceOnUse" x1="765.522" y1="202.106" x2="765.522" y2="211.257" gradientTransform="matrix(1 0 0 -1 84 475)">
@@ -123,7 +120,7 @@ class CaptorBuilder extends Component {
             <div className="CaptorBuilderHeader-action">
               <Button type="primary">Save Captor</Button>
             </div>
-          </Header>
+          </header>
           <div className="CaptorBuilderLayoutContent">
             <div className="CaptorBuilderSider">
               <ul className="CaptorBuilderNav">
@@ -138,7 +135,7 @@ class CaptorBuilder extends Component {
                 })}
               </ul>
             </div>
-            <Content className="CaptorBuilderContent">
+            <div className="CaptorBuilderContent">
               <CaptorToolbar
                 className={classNames('CaptorToolbar', { visible: isToolbarVisible, wide: includes(['logicJump','calculator'], activeToolbarPanel)})}
                 panel={activeToolbarPanel}
@@ -155,7 +152,7 @@ class CaptorBuilder extends Component {
                 activeFieldId={activeFieldId}
                 onChangeActiveField={(id) => this.onChangeActiveField(id)}
               />
-            </Content>
+            </div>
           </div>
         </div>
       </DragDropContext>

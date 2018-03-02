@@ -16,9 +16,9 @@ class CaptorToolbar extends Component {
     }
   }
   render() {
-    const { panel } = this.props;
+    const { panel, className } = this.props;
     return (
-      <div {...this.props}>
+      <div className={className}>
         {this.displayPanel(panel)}
       </div>
     );

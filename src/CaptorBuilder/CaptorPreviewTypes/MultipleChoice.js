@@ -17,7 +17,7 @@ class MultipleChoice extends Component {
       (<CheckboxGroup options={optionData}/>) :
       (<RadioGroup>
         {optionData.map((option) => (
-          <Radio value={option.value}>{option.label}</Radio>
+          <Radio key={option.value} value={option.value}>{option.label}</Radio>
         ))}
       </RadioGroup>);
 

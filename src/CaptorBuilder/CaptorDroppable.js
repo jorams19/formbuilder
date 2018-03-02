@@ -12,13 +12,13 @@ class CaptorDroppable extends Component {
         {(provided, snapshot) => {
           return (
             <div
-              {...this.props}
               ref={provided.innerRef}
               {...provided.droppableProps}
               className={classNames('CaptorDroppable', { isDraggingOver: snapshot.isDraggingOver })}
             >
               {fieldsArray.map((field) => (
                 <CaptorFieldItem
+                  key={field.id}
                   id={field.id}
                   type={field.type}
                   activeFieldId={activeFieldId}

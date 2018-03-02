@@ -15,6 +15,7 @@ const { Element, Events, scrollSpy } = Scroll;
 
 class CaptorPreviewItem extends Component {
   displayPreviewField = (type) => {
+    const { onChangeActiveField, activeFieldId } = this.props;
     switch(type) {
       case 'TEXT': return (<Text />);
       case 'MULTIPLE': return (<MultipleChoice />);

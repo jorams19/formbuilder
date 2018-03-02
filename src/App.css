@@ -10,7 +10,8 @@
     background-color: #FFF;
     height: 80px;
     line-height: 80px;
-    border-bottom: 1px solid #EEE; }
+    border-bottom: 1px solid #EEE;
+    padding: 0 24px; }
     .CaptorBuilderLayout .CaptorBuilderHeader .CaptorBuilderHeader-title, .CaptorBuilderLayout .CaptorBuilderHeader .CaptorBuilderHeader-action {
       display: inline-flex; }
   .CaptorBuilderLayout .CaptorBuilderLayoutContent {
@@ -44,6 +45,7 @@
             display: none; }
     .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent {
       display: flex;
+      flex: 1;
       height: 100%;
       overflow: hidden; }
       .CaptorBuilderLayout .CaptorBuilderLayoutContent .CaptorBuilderContent .CaptorPanelHeader {

@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import { Input, Form, Progress, Button } from 'antd';
+import { Form, Progress, Button } from 'antd';
 import Scroll from 'react-scroll';
-import produce from 'immer';
 
 import CaptorPreviewItem from './CaptorPreviewItem';
 
-const { Element, Events, scrollSpy, scroller, Link } = Scroll;
-const { Item } = Form;
+const { Events, scrollSpy, scroller } = Scroll;
 
 class CaptorPreview extends Component {
   state = {
@@ -51,7 +49,7 @@ class CaptorPreview extends Component {
     this.scrollTo();
   }
   render() {
-    const { fieldsArray, activeFieldId } = this.props;
+    const { fieldsArray, activeFieldId, onChangeActiveField } = this.props;
     this.scrollTo(activeFieldId);
     return (
       <div className="CaptorPreview">
@@ -61,10 +59,13 @@ class CaptorPreview extends Component {
               const active = (field.id === activeFieldId) ? true: false;
               return (
                 <CaptorPreviewItem
+                  key={field.id}
                   title={field.title}
                   id={field.id}
                   type={field.type}
                   active={active}
+                  activeFieldId={activeFieldId}
+                  onChangeActiveField={onChangeActiveField}
                 />
               );
             })}
