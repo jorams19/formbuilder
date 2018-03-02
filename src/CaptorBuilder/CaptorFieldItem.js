@@ -63,7 +63,13 @@ class CaptorFieldItem extends Component {
                   <span>1</span>
                 </Tag>
               </span>
-              {this.fieldType(type)}
+              <div>
+                {this.fieldType(type)}
+                <div>
+                  <Tag color="volcano" closable>Logic Jump</Tag>
+                  <Tag color="blue" closable>Calculator</Tag>
+                </div>
+              </div>
             </div>
             {provided.placeholder}
           </div>
