@@ -15,7 +15,6 @@ const { Element, Events, scrollSpy } = Scroll;
 
 class CaptorPreviewItem extends Component {
   displayPreviewField = (type) => {
-    const { onChangeActiveField, activeFieldId } = this.props;
     switch(type) {
       case 'TEXT': return (<Text />);
       case 'MULTIPLE': return (<MultipleChoice />);
@@ -27,10 +26,18 @@ class CaptorPreviewItem extends Component {
       default: return (<Text />);
     }
   }
+  onElementFocus = () => {
+    const { onChangeActiveField, id } = this.props;
+    onChangeActiveField(id);
+  }
   render() {
     const { id, active, type, title } = this.props;
     return (
-      <Element name={id} className={classNames('FieldCard', { active } )}>
+      <Element
+        name={id}
+        className={classNames('FieldCard', { active } )}
+        onFocus={this.onElementFocus}
+      >
         <label>{title}</label>
         {this.displayPreviewField(type)}
       </Element>
