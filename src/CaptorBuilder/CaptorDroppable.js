@@ -6,6 +6,7 @@ import CaptorFieldItem from './CaptorFieldItem';
 
 class CaptorDroppable extends Component {
   render() {
+    const { fieldsArray, activeFieldId, onChangeActiveField } = this.props;
     return (
       <Droppable droppableId="CaptorDroppable" type="FIELD">
         {(provided, snapshot) => {
@@ -16,10 +17,14 @@ class CaptorDroppable extends Component {
               {...provided.droppableProps}
               className={classNames('CaptorDroppable', { isDraggingOver: snapshot.isDraggingOver })}
             >
-              <div className="placeholder" />
-              <CaptorFieldItem id="1" type="TEXT"/>
-              <CaptorFieldItem id="2" type="EMAIL"/>
-              <CaptorFieldItem id="3" type="MULTIPLE"/>
+              {fieldsArray.map((field) => (
+                <CaptorFieldItem
+                  id={field.id}
+                  type={field.type}
+                  activeFieldId={activeFieldId}
+                  onChangeActiveField={(id) =>onChangeActiveField(id)}
+                />
+              ))}
               {provided.placeholder}
             </div>
           );

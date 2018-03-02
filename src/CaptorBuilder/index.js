@@ -16,11 +16,23 @@ class CaptorBuilder extends Component {
   state = {
     isToolbarVisible: false,
     activeToolbarPanel: '',
+    activeFieldId: 'asd23',
+    fieldsArray: [
+      {id: 'asd23', type: 'TEXT', title: 'Type some text'},
+      {id: 'joasd', type: 'MULTIPLE', title: 'Select anything'},
+      {id: 'uhf88', type: 'RATING', title: 'Rate me'},
+      {id: 'asdd3', type: 'MULTIPLE', title: 'Hey, Im a dropdown'},
+    ],
   };
   onDragStart= () => {
   }
   onDragEnd = () => {
     // Drag end here
+  }
+  onChangeActiveField = (id) => {
+    this.setState({
+      activeFieldId: id,
+    });
   }
 
   handleMenuClick = (e, key) => {
@@ -48,7 +60,7 @@ class CaptorBuilder extends Component {
   }
 
   render() {
-    const { isToolbarVisible, activeToolbarPanel } = this.state;
+    const { isToolbarVisible, activeToolbarPanel, fieldsArray, activeFieldId } = this.state;
     const menuItems = [{
         title: 'Fields',
         key: 'fieldsList',
@@ -132,8 +144,17 @@ class CaptorBuilder extends Component {
                 panel={activeToolbarPanel}
                 onToolbarClose={this.handleCloseToolbar}
               />
-              <CaptorDroppable className="CaptorDroppable" />
-              <CaptorPreview />
+              <CaptorDroppable
+                className="CaptorDroppable"
+                fieldsArray={fieldsArray}
+                activeFieldId={activeFieldId}
+                onChangeActiveField={(id) => this.onChangeActiveField(id)}
+              />
+              <CaptorPreview
+                fieldsArray={fieldsArray}
+                activeFieldId={activeFieldId}
+                onChangeActiveField={(id) => this.onChangeActiveField(id)}
+              />
             </Content>
           </div>
         </div>

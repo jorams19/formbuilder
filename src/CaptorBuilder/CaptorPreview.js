@@ -10,13 +10,7 @@ const { Item } = Form;
 
 class CaptorPreview extends Component {
   state = {
-    currentActiveField: 0,
-    fieldsData: [
-      {name: 'field-1', title: 'What is your name?', type: 'TEXT', active: true},
-      {name: 'field-2', title: 'Rate our app', type: 'RATING', active: false},
-      {name: 'field-3', title: 'Choose an option', type: 'DROPDOWN', active: false},
-      {name: 'field-4', title: 'Type anything here', type: 'TEXTAREA', active: false},
-    ],
+    currentActiveField: (this.props.activeFieldId) ? 0 : 0,
   };
   componentDidMount() {
     Events.scrollEvent.register('begin', (to, element) => {
@@ -28,64 +22,60 @@ class CaptorPreview extends Component {
 
     scrollSpy.update();
   }
-  moveUp = () => {
-    const { currentActiveField, fieldsData } = this.state;
-    const nextFieldsData = produce(fieldsData, draftFieldsData => {
-      draftFieldsData[currentActiveField].active = false;
-      draftFieldsData[currentActiveField - 1].active = true;
-    });
-    scroller.scrollTo(fieldsData[currentActiveField - 1].name, {
+  scrollTo = (id) => {
+    scroller.scrollTo(id, {
       duration: 300,
       smooth: true,
       containerId: 'CaptorPreviewScrollable',
       offset: -250,
     });
-    this.setState((prevState) => {
-      return {
-        fieldsData: nextFieldsData,
-        currentActiveField: prevState.currentActiveField - 1,
-      };
+  }
+  getFieldIndex = (id) => {
+    const { fieldsArray } = this.props;
+    return fieldsArray.findIndex((field) => {
+      return field.id === id;
     });
+  }
+  moveUp = () => {
+    const { onChangeActiveField, fieldsArray, activeFieldId } = this.props;
+    const index = this.getFieldIndex(activeFieldId);
+    const maxStep = Math.max(0, index - 1);
+    onChangeActiveField(fieldsArray[maxStep].id);
+    this.scrollTo();
   }
   moveDown = () => {
-    const { currentActiveField, fieldsData } = this.state;
-    const nextFieldsData = produce(fieldsData, draftFieldsData => {
-      draftFieldsData[currentActiveField].active = false;
-      draftFieldsData[currentActiveField + 1].active = true;
-    });
-    scroller.scrollTo(fieldsData[currentActiveField + 1].name, {
-      duration: 300,
-      smooth: true,
-      containerId: 'CaptorPreviewScrollable',
-      offset: -250,
-    });
-    this.setState((prevState) => {
-      return {
-        fieldsData: nextFieldsData,
-        currentActiveField: prevState.currentActiveField + 1,
-      };
-    });
+    const { onChangeActiveField, fieldsArray, activeFieldId } = this.props;
+    const index = this.getFieldIndex(activeFieldId);
+    const minStep = Math.min(fieldsArray.length - 1, index + 1);
+    onChangeActiveField(fieldsArray[minStep].id);
+    this.scrollTo();
   }
   render() {
-    const { fieldsData } = this.state;
+    const { fieldsArray, activeFieldId } = this.props;
+    this.scrollTo(activeFieldId);
     return (
       <div className="CaptorPreview">
         <div id="CaptorPreviewScrollable" className="CaptorPreviewScrollable">
           <div className="CaptorElementsWrap">
-            {fieldsData.map((field) => (
-              <CaptorPreviewItem
-                title={field.title}
-                name={field.name}
-                type={field.type}
-                active={field.active}
-              />
-            ))}
+            {fieldsArray.map((field) => {
+              const active = (field.id === activeFieldId) ? true: false;
+              return (
+                <CaptorPreviewItem
+                  title={field.title}
+                  id={field.id}
+                  type={field.type}
+                  active={active}
+                />
+              );
+            })}
           </div>
         </div>
         <div className="CaptorPrevewActions">
           <Progress percent={40} status="active" showInfo={false} />
+          <div>
           <Button onClick={this.moveUp} size="large" type="primary" icon="up" style={{ marginLeft: '8px' }}/>
           <Button onClick={this.moveDown} size="large" type="primary" icon="down" style={{ marginLeft: '8px' }}/>
+          </div>
         </div>
       </div>
     );

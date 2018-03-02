@@ -24,11 +24,8 @@ class CaptorFieldItem extends Component {
     }
   }
   onFocus = () => {
-    const { type } = this.props;
-    console.log(fieldColors[type] + '40');
-    this.setState({
-      background: fieldColors[type] + '20',
-    });
+    const { onChangeActiveField, id } = this.props;
+    onChangeActiveField(id);
   }
   onBlur = () => {
     this.setState({
@@ -36,10 +33,10 @@ class CaptorFieldItem extends Component {
     });
   }
   render() {
-    const { id, type } = this.props;
+    const { id, type, activeFieldId } = this.props;
     const { background } = this.state;
     return (
-      <Draggable draggableId={`fieldItem-${id}`} type="FIELD">
+      <Draggable draggableId={id} type="FIELD">
         {(provided, snapshot) => (
           <div>
             <div
@@ -49,6 +46,10 @@ class CaptorFieldItem extends Component {
               style={{ backgroundColor: background, ...provided.draggableProps.style }}
               onFocus={this.onFocus}
               onBlur={this.onBlur}
+              style={{
+                ...provided.draggableProps.style,
+                backgroundColor: (activeFieldId === id) ? fieldColors[type] + '20' : '#FFF',
+              }}
             >
               <span
                 className="CaptorFieldItem-handle"

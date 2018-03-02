@@ -27,9 +27,9 @@ class CaptorPreviewItem extends Component {
     }
   }
   render() {
-    const { name, active, type, title } = this.props;
+    const { id, active, type, title } = this.props;
     return (
-      <Element name={name} className={classNames('FieldCard', { active } )}>
+      <Element name={id} className={classNames('FieldCard', { active } )}>
         <label>{title}</label>
         {this.displayPreviewField(type)}
       </Element>
